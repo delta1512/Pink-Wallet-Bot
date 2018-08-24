@@ -31,7 +31,7 @@ client.remove_command('help')
 FCT = 'FAUCET'
 RN = 'RAIN'
 latest_users = {}
-price_fetcher = price_bot()
+price_fetcher = Pricebot()
 blacklister = None
 rbot = None
 
@@ -94,18 +94,18 @@ async def on_command_error(ctx, error):
         return
 
     if isinstance(error, commands.CommandNotFound):
-        return await ctx.send(f'{e.INFO}Invalid command. Type `%help` for help.')
+        return await ctx.send(f'{e.INFO}Invalid command. Type `!help` for help.')
     if isinstance(error, errors.NotInUDB):
-        return await ctx.send(f'{e.ERROR}You are not in user database. (try `%new` or type `%help` for help)')
+        return await ctx.send(f'{e.ERROR}You are not in user database. (try `!new` or type `!help` for help)')
     if isinstance(error, commands.MissingRequiredArgument):
         if ctx.command.name == 'withdraw':
-            return await ctx.send(f'{e.INFO}To withdraw from your account type: `%wdr [address to send to] [amount-GRC]`\nA service fee of {p.tx_fee} GRC is subtracted from what you send. If you wish to send GRC to someone in the server, use `%give`')
+            return await ctx.send(f'{e.INFO}To withdraw from your account type: `!wdr [address to send to] [amount-PINK]`\nA service fee of {p.tx_fee} PINK is subtracted from what you send. If you wish to send PINK to someone in the server, use `!give`')
         if ctx.command.name == 'donate':
-            return await ctx.send(extras.index_displayer(f'{e.GIVE}Be generous! Below are possible donation options.\nTo donate, type `%donate [selection no.] [amount-GRC]`\n', p.donation_accts))
+            return await ctx.send(extras.index_displayer(f'{e.GIVE}Be generous! Below are possible donation options.\nTo donate, type `!donate [selection no.] [amount-PINK]`\n', p.donation_accts))
         if ctx.command.name == 'rdonate':
-            return await ctx.send(f'{e.GIVE}To donate to a random contributor type: `%rdonate [amount-GRC]`')
+            return await ctx.send(f'{e.GIVE}To donate to a random contributor type: `!rdonate [amount-PINK]`')
         if ctx.command.name == 'give':
-            return await ctx.send(f'{e.INFO}To give funds to a member in the server, type `%give [discord mention of user] [amount to give]`.\nThe person must also have an account with the bot.')
+            return await ctx.send(f'{e.INFO}To give funds to a member in the server, type `!give [discord mention of user] [amount to give]`.\nThe person must also have an account with the bot.')
         if ctx.command.name == 'fgive':
             return await ctx.send(f'{e.ERROR}Please specify an amount to give.')
         if ctx.command.name == 'rain':
@@ -328,7 +328,7 @@ async def _time(ctx):
     await ctx.send(extras.check_times(user_obj))
 
 
-@client.command(aliases=['grcmoon', 'whenmoon', 'lambo', 'whenlambo'])
+@client.command(aliases=['pinkmoon', 'whenmoon', 'lambo', 'whenlambo'])
 async def moon(ctx):
     await ctx.send(extras.moon())
 

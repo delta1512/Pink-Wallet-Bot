@@ -2,7 +2,7 @@ from random import uniform
 import discord
 
 import queries as q
-import grcconf as g
+import pinkconf as p
 import emotes as e
 import docs
 
@@ -47,7 +47,7 @@ class Rainbot:
 
 
     def get_next_thresh(self):
-        self.thresh = round(uniform(g.MIN_RAIN, g.MAX_RAIN), 8)
+        self.thresh = round(uniform(p.MIN_RAIN, p.MAX_RAIN), 8)
 
 
     def can_rain(self):

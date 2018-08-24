@@ -5,11 +5,11 @@ import aiohttp
 import asyncio
 import json
 
-class price_bot:
+class Pricebot:
     last_updated = 0
     last_price = 0
     timeout_sec = 380
-    price_url = 'https://api.coinmarketcap.com/v2/ticker/833'
+    price_url = 'https://api.coinmarketcap.com/v2/ticker/313/'
 
     async def price(self):
         if round(time()) > self.last_updated+self.timeout_sec:

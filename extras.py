@@ -11,7 +11,6 @@ import emotes as e
 import wallet as w
 import help_docs
 import docs
-import FAQ
 
 
 def amt_filter(inp):
